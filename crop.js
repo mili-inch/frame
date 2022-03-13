@@ -85,8 +85,11 @@
         }
     canvas.ontouchmove =
         canvas.onmousemove = (e) => {
-            if (mouseDown == false) return;
-            drawCanvas(centerX + (startX - e.pageX) * (destHeight / maxHeight) / scale, centerY + (startY - e.pageY) * (destHeight / maxHeight) / scale);
+            if (e.touches && e.touches.length > 1) {
+            } else {
+                if (mouseDown == false) return;
+                drawCanvas(centerX + (startX - e.pageX) * (destHeight / maxHeight) / scale, centerY + (startY - e.pageY) * (destHeight / maxHeight) / scale);
+            }
             return false;
         }
     canvas.onmousewheel = (e) => {
