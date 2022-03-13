@@ -1,19 +1,43 @@
 ﻿<!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kosugi&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>SewerCrab Web</title>
+    <title>SewerFrame</title>
   </head>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <input type="file" accept="image/*" name="button_upload" id="button_upload" />
   <div>
     <canvas id="canvas"></canvas>
   </div>
-  <button type="button" id="bash">実行</button>
-  <div id="preview"></div>
   <div>
-    バグ報告など連絡は<a href="https://peing.net/ja/mili_inch?event=0">質問箱</a
-    >へ
+  <input type="text" id="number" name="number" value="101">
+  <input type="text" id="name" name="name" value="ミリ">
   </div>
+  <button type="button" id="bash">ダウンロード</button>
+  <div id="download"></div>
+  <div>
+    操作
+    <ul>
+      <li>読み込み D&D可</li>
+      <li>移動 ドラッグorスワイプ</li>
+      <li>拡縮 ホイールorピンチイン・アウト</li>
+    </ul>
+      バグ報告など連絡は<a
+        href="https://github.com/mili-inch/frame/issues"
+        >GitHub</a
+      >へ
+    </li>
+  </div>
+  <div id="load_font">
+  <span style="font-family: Poppins;">.</span>
+  <span style="font-family: Kosugi;">あ</span>
+  </div>
+
   <script type="text/javascript" src="crop.js"></script>
 </html>

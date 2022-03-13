@@ -4,6 +4,9 @@
 canvas {
     max-height: 600px;
 }
+#load_font {
+    visibility: hidden;
+}
 @media screen and (max-width: 480px){  }
 @media screen and (min-width: 480px){  }
 @media screen and (min-width: 480px) and ( max-width:1024px) {  }
