@@ -26,6 +26,7 @@
     let centerX = 0;
     let centerY = 0;
     let scale = 1.0;
+    let color = "rgb(0, 0, 0)";
 
     const uploadButton = document.getElementById("button_upload");
     const canvas = document.getElementById("canvas");
@@ -49,7 +50,7 @@
     }
 
     const drawCanvas = function (x, y) {
-        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillStyle = color;
         ctx.fillRect(0, 0, destWidth, destHeight);
         ctx.drawImage(img,
             0, 0, img.naturalWidth, img.naturalHeight,
@@ -58,7 +59,6 @@
     };
 
     let mouseDown = false;
-    let mouseDist = false;
     let startX = 0;
     let startY = 0;
     let startDist = 1;
@@ -71,7 +71,6 @@
                     mouseDown = false;
                     drawCanvas(centerX += (startX - e.touches[0].pageX) * (destHeight / maxHeight) / scale, centerY += (startY - e.touches[0].pageY) * (destHeight / maxHeight) / scale);
                 }
-                mouseDist = true;
                 startScale = scale;
                 startDist = Math.abs(e.touches[0].pageX - e.touches[1].pageX);
             } else {
@@ -84,13 +83,6 @@
     canvas.ontouchend =
         canvas.onmouseout =
         canvas.onmouseup = (e) => {
-            if (mouseDist == true) {
-                mouseDist = false;
-                mouseDown = true;
-                startX = e.pageX;
-                startY = e.pageY;
-                return;
-            }
             if (mouseDown == false) return;
             mouseDown = false;
             drawCanvas(centerX += (startX - e.pageX) * (destHeight / maxHeight) / scale, centerY += (startY - e.pageY) * (destHeight / maxHeight) / scale);
@@ -99,8 +91,8 @@
     canvas.ontouchmove =
         canvas.onmousemove = (e) => {
             if (e.touches && e.touches.length > 1) {
-                if (mouseDist == false) return;
                 scale = startScale * (Math.abs(e.touches[0].pageX - e.touches[1].pageX) / startDist);
+                drawCanvas(centerX, centerY);
             } else {
                 if (mouseDown == false) return;
                 drawCanvas(centerX + (startX - e.pageX) * (destHeight / maxHeight) / scale, centerY + (startY - e.pageY) * (destHeight / maxHeight) / scale);
