@@ -64,7 +64,7 @@
     canvas.ontouchstart =
         canvas.onmousedown = (e) => {
             if (e.touches && e.touches.length > 1) {
-                if (mouseDown = true) {
+                if (mouseDown == true) {
                     mouseDown = false;
                     drawCanvas(centerX += (startX - e.touches[0].pageX) * (destHeight / maxHeight) / scale, centerY += (startY - e.touches[0].pageY) * (destHeight / maxHeight) / scale);
                 }
