@@ -60,11 +60,19 @@
     let mouseDown = false;
     let startX = 0;
     let startY = 0;
+
     canvas.ontouchstart =
         canvas.onmousedown = (e) => {
-            mouseDown = true;
-            startX = e.pageX;
-            startY = e.pageY;
+            if (e.touches && e.touches.length > 1) {
+                if (mouseDown = true) {
+                    mouseDown = false;
+                    drawCanvas(centerX += (startX - e.touches[0].pageX) * (destHeight / maxHeight) / scale, centerY += (startY - e.touches[0].pageY) * (destHeight / maxHeight) / scale);
+                }
+            } else {
+                mouseDown = true;
+                startX = e.pageX;
+                startY = e.pageY;
+            }
             return false
         }
     canvas.ontouchend =
