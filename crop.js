@@ -20,6 +20,15 @@
     let number = "101";
     let name = "ミリ";
 
+    if (localStorage.getItem("number")) {
+        number = localStorage.getItem("number");
+        numberInput.value = number;
+    }
+    if (localStorage.getItem("name")) {
+        name = localStorage.getItem("name");
+        nameInput.value = name;
+    }
+
     const onFileSelected = (files) => {
         const reader = new FileReader();
         reader.onload = function () {
@@ -85,11 +94,13 @@
 
     numberInput.oninput = (e) => {
         number = e.target.value;
+        localStorage.setItem("number", number);
         drawCanvas(centerX, centerY);
     }
 
     nameInput.oninput = (e) => {
         name = e.target.value;
+        localStorage.setItem("name", name);
         drawCanvas(centerX, centerY);
     }
 
